@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amplify Your Ministry</title>
+    <!-- Import Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Import Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Apply the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom animation for the scroll-down arrow */
+        /* I've left the keyframes in case you want to add the animation back,
+          but the class is removed from the arrow element.
+        */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+    <!--
+      Hero Section
+      This is the first page the user sees, with the video and "Learn More" button.
+    -->
+    <section class="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-white to-gray-50 relative">
+        <div class="text-center max-w-4xl mx-auto">
+            
+            <!-- Main Headline (NEW) -->
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Amplify Your Ministry.
+                <span class="text-blue-600">Turn Sermons into Outreach.</span>
+            </h1>
+            <!-- Sub-headline (NEW) -->
+            <p class="text-lg md:text-xl text-gray-600 mb-10">
+                Stop letting your sermons sit on a hard drive. We help churches spread the gospel and grow their congregations by turning messages into engaging media kits, built for social media.
+            </p>
+
+            <!-- Embedded YouTube Video -->
+            <div class="aspect-video w-full max-w-3xl mx-auto rounded-xl shadow-2xl overflow-hidden mb-8 border border-gray-200">
+                <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/M7lc1UVf-VE"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+                <!-- Note: Replace "M7lc1UVf-VE" with an example of a short you've created! -->
+            </div>
+
+            <!-- "Continue ->" Button (Updated position) -->
+            <div class="flex justify-center md:justify-end md:pr-8 lg:pr-16"> <!-- Centered on mobile, right-aligned on desktop -->
+                <button id="openModalButton" class="py-3 px-8 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                    Continue ->
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Down Arrow (Static) -->
+        <a href="#details" class="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer" aria-label="Scroll down to read more">
+            <div class="text-blue-600"> <!-- Removed animate-bounce-slow -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14"></path>
+                    <path d="m19 12-7 7-7-7"></path>
+                </svg>
+            </div>
+        </a>
+    </section>
+
+    <!--
+      "Read More" Section (NEW CONTENT)
+      This is the content users can scroll down to.
+    -->
+    <section id="details" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                    From the Sanctuary to Their Phones
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Your message is powerful. Our mission is to make sure it gets *seen*. We create full media kits designed to spread the Word and help grow your church.
+                </p>
+            </div>
+
+            <!-- Feature Grid (NEW CONTENT) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                
+                <!-- Feature 1: Sermon-to-Shorts -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <!-- Icon -->
+                    <div class="p-3 bg-blue-100 rounded-full inline-block mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M11 17a2 2 0 1 0-4 0v-6a2 2 0 1 0-4 0v6a6 6 0 0 0 6 6h2"></path><path d="m15 17-3 3 3 3"></path><path d="M20 15.5A3.5 3.5 0 0 0 16.5 12H16v8.5a3.5 3.5 0 1 0 7 0v-1.5A3.5 3.5 0 0 0 20 15.5Z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Sermon-to-Shorts</h3>
+                    <p class="text-gray-600">
+                        We analyze your full-length sermons and extract the most powerful, shareable moments. Our team edits these into high-impact vertical shorts for Instagram, TikTok, and YouTube.
+                    </p>
+                </div>
+                
+                <!-- Feature 2: Full Media Kits -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <!-- Icon -->
+                    <div class="p-3 bg-blue-100 rounded-full inline-block mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M21 12V7H5a2 2 0 0 1 0-4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"></path><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"></path><path d="M18 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2Z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Complete Media Kits</h3>
+                    <p class="text-gray-600">
+                        You get more than just videos. We deliver a full kit including quote graphics, carousel posts, and audiograms, all branded for your church and ready to post.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Formulated for Growth -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <!-- Icon -->
+                    <div class="p-3 bg-blue-100 rounded-full inline-block mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m4.93 19.07 1.41-1.41"></path><path d="m17.66 6.34 1.41-1.41"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Formulated for Growth</h3>
+                    <p class="text-gray-600">
+                        We don't just make content; we make content that *works*. Our strategies are formulated to get views, engage your community, and invite more people to your church.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <p>&copy; 2025 Amplify Your Ministry. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!--
+      Modal (Pop-up Form)
+      This is the "typescript" you referred to. It's hidden by default.
+    -->
+    <div id="formModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm hidden transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        
+        <!-- Modal Content -->
+        <div id="modalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-8 transform transition-all duration-300 scale-95 opacity-0">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Start Reaching More People</h2>
+                <button id="closeModalButton" class="text-gray-400 hover:text-gray-700 transition-colors" aria-label="Close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Contact Form with 5 Questions (Q3 is NEW) -->
+            <form id="contactForm" class="space-y-5">
+                
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">1. What is your full name?</label>
+                    <input type="text" id="name" name="name" required
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">2. What is your email address?</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                </div>
+
+                <div>
+                    <label for="challenge" class="block text-sm font-medium text-gray-700 mb-1">3. What's your biggest challenge with church media right now?</label>
+                    <input type="text" id="challenge" name="challenge"
+                           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                </div>
+
+                <div>
+                    <label for="referral" class="block text-sm font-medium text-gray-700 mb-1">4. How did you hear about us?</label>
+                    <select id="referral" name="referral"
+                            class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+                        <option>Search Engine (Google, etc.)</option>
+                        <option>Social Media</option>
+                        <option>Word of Mouth</option>
+                        <option>Advertisement</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="questions" class="block text-sm font-medium text-gray-700 mb-1">5. Do you have any specific questions for us?</label>
+                    <textarea id="questions" name="questions" rows="4"
+                              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit"
+                            class="w-full py-3 px-6 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        Submit Information
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--
+      "Thank You" Modal
+      Appears after form submission.
+    -->
+    <div id="thanksModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm hidden transition-opacity duration-300" aria-labelledby="thanks-modal-title" role="dialog" aria-modal="true">
+        
+        <div id="thanksModalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-md p-8 text-center transform transition-all duration-300 scale-95 opacity-0">
+            <div class="p-3 bg-green-100 rounded-full inline-block mb-4">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h2 id="thanks-modal-title" class="text-2xl font-bold text-gray-900 mb-3">Thank You!</h2>
+            <p class="text-gray-600 mb-6">
+                Your information has been received. We'll be in touch shortly.
+            </p>
+            <button id="closeThanksButton"
+                    class="w-full py-2 px-6 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        // Get all necessary elements
+        const openModalButton = document.getElementById('openModalButton');
+        const closeModalButton = document.getElementById('closeModalButton');
+        const formModal = document.getElementById('formModal');
+        const modalContent = document.getElementById('modalContent');
+        
+        const contactForm = document.getElementById('contactForm');
+        
+        const thanksModal = document.getElementById('thanksModal');
+        const thanksModalContent = document.getElementById('thanksModalContent');
+        const closeThanksButton = document.getElementById('closeThanksButton');
+
+        // --- Form Modal Logic ---
+
+        // Function to open the form modal
+        const openFormModal = () => {
+            formModal.classList.remove('hidden');
+            // Use requestAnimationFrame for a smooth entry animation
+            requestAnimationFrame(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+            });
+        };
+
+        // Function to close the form modal
+        const closeFormModal = () => {
+            modalContent.classList.add('scale-95', 'opacity-0');
+            // Wait for animation to finish before hiding
+            setTimeout(() => {
+                formModal.classList.add('hidden');
+            }, 300); // 300ms matches the transition duration
+        };
+
+        // --- "Thank You" Modal Logic ---
+
+        // Function to open the "Thank You" modal
+        const openThanksModal = () => {
+            thanksModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                thanksModalContent.classList.remove('scale-95', 'opacity-0');
+            });
+        };
+
+        // Function to close the "Thank You" modal
+        const closeThanksModal = () => {
+            thanksModalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                thanksModal.classList.add('hidden');
+            }, 300);
+        };
+
+        // --- Event Listeners ---
+
+        // Open the form modal
+        openModalButton.addEventListener('click', openFormModal);
+
+        // Close the form modal
+        closeModalButton.addEventListener('click', closeFormModal);
+
+        // Close the form modal if clicking the backdrop
+        formModal.addEventListener('click', (e) => {
+            if (e.target === formModal) {
+                closeFormModal();
+            }
+        });
+
+        // Handle form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent the form from actually submitting
+            
+            // --- This is the new code to send the email ---
+            const formData = new FormData(contactForm);
+            // vvvv YOUR NEW LIVE URL FROM FORMSPREE vvvv
+            const formSpreeURL = 'https://formspree.io/f/xjknrjgq';
+
+            // We use JavaScript's "fetch" to send the data in the background
+            // so the page doesn't have to reload.
+            fetch(formSpreeURL, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success! Show the "Thank You" modal
+                    console.log("Form submitted successfully to Formspree.");
+                    closeFormModal();
+                    setTimeout(openThanksModal, 400);
+                    contactForm.reset(); // Clear the form fields
+                } else {
+                    // Handle errors from Formspree
+                    response.json().then(data => {
+                        // This will show a simple message if something goes wrong
+                        // (like a validation error on their end)
+                        if (Object.hasOwn(data, 'errors')) {
+                            // This is a safe way to show an error
+                            const errorMsg = data["errors"].map(error => error["message"]).join(", ");
+                            console.warn("Formspree error: " + errorMsg);
+                            // We can't use alert(), so we'll just log it
+                        } else {
+                            console.warn('Oops! There was a problem submitting your form.');
+                        }
+                    })
+                }
+            })
+            .catch(error => {
+                // Handle network errors (like no internet)
+                console.error("Fetch Error:", error);
+                console.warn('Oops! There was a network error.');
+            });
+            
+        });
+
+        // Close the "Thank You" modal
+        closeThanksButton.addEventListener('click', closeThanksModal);
+
+        // Close the "Thank You" modal if clicking the backdrop
+        thanksModal.addEventListener('click', (e) => {
+            if (e.target === thanksModal) {
+                closeThanksModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
