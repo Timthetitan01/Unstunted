@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amplify Your Ministry</title>
+    <!-- Import Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Import Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,180 +18,80 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Custom styles for the quiz options */
-        .quiz-option {
-            /* Ensures the default border is present to prevent layout shift when selected */
-            border: 2px solid #e5e7eb; /* Default border color: Gray 200/300 */
-            transition: all 0.2s ease-in-out;
+        /* Input focus styles */
+        .form-input-field {
+            transition: all 0.2s;
+            border: 1px solid #d1d5db; /* gray-300 */
         }
 
-        .quiz-option:hover {
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -2px rgba(59, 130, 246, 0.1);
-            border-color: #93c5fd; /* Light blue on hover */
+        .form-input-field:focus {
+            outline: none;
+            border-color: #3b82f6; /* blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* blue-500 ring */
         }
-
-        .quiz-option.selected {
-            /* Active selection styling */
-            border: 2px solid #3b82f6; /* Blue 600 border */
-            background-color: #eff6ff; /* Blue 50 background tint */
-            box-shadow: 0 0 0 1px #3b82f6; /* Subtle ring effect */
-        }
-
-        /* Ensure the modal content is ready for dynamic resizing */
-        #modalContent {
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        /* Style for the "Good News" message step - Mobile Optimization Added */
-        .good-news-message {
-            background: linear-gradient(135deg, #e0f2fe, #bfdbfe); /* Light blue gradient */
-            padding: 1.5rem; /* Reduced padding for mobile */
-            border-radius: 1rem;
-            text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Tighter text for good news on mobile */
-        .good-news-message h3 {
-            font-size: 1.75rem; /* Default 3xl is 1.875rem, keeping it close or slightly smaller */
-        }
-
-        .good-news-message p {
-            font-size: 1.125rem; /* Default xl is 1.25rem, keeping it close or slightly smaller */
-        }
-
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
 
+    <!--
+      Hero Section - Now containing the form directly
+    -->
     <section class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 bg-gradient-to-b from-white to-gray-50 relative">
         <div class="text-center max-w-4xl mx-auto">
             
+            <!-- Main Headline -->
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Amplify Your Ministry.
-                <span class="text-blue-600">Turn Sermons into Outreach.</span>
+                Get 3 PROFESSIONALLY EDITED sermon clips
+                <span class="text-blue-600">completely free.</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 mb-10">
-                Stop letting your sermons sit on a hard drive. We help churches spread the gospel and grow their congregations by turning messages into engaging media kits, built for social media.
+            <!-- Sub-headline -->
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+            We’ll take one of your recent sermons off of youtube, and turn it into three high-quality clips your church can post immediately.
             </p>
 
-            <div class="aspect-video w-full max-w-3xl mx-auto rounded-xl shadow-2xl overflow-hidden mb-8 border border-gray-200">
-                <iframe
-                    class="w-full h-full"
-                    src="https://www.youtube.com/embed/M7lc1UVf-VE"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
-            </div>
-
-            <div class="flex justify-center md:justify-end md:pr-8 lg:pr-16">
-                <button id="openModalButton" class="py-3 px-8 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                    Continue ->
-                </button>
-            </div>
-        </div>
-
-        <a href="#details" class="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer" aria-label="Scroll down to read more">
-            <div class="text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 5v14"></path>
-                    <path d="m19 12-7 7-7-7"></path>
-                </svg>
-            </div>
-        </a>
-    </section>
-
-    <section id="details" class="py-16 md:py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-4 md:px-8">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    From the Sanctuary to Their Phones
-                </h2>
-                <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-                    Your message is powerful. Our mission is to make sure it gets *seen*. We create full media kits designed to spread the Word and help grow your church.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
-                
-                <div class="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="p-3 bg-blue-100 rounded-full inline-block mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M11 17a2 2 0 1 0-4 0v-6a2 2 0 1 0-4 0v6a6 6 0 0 0 6 6h2"></path><path d="m15 17-3 3 3 3"></path><path d="M20 15.5A3.5 3.5 0 0 0 16.5 12H16v8.5a3.5 3.5 0 1 0 7 0v-1.5A3.5 3.5 0 0 0 20 15.5Z"></path></svg>
+            <!--
+                Direct Lead Capture Form (Previously inside the modal)
+                Now centered and contained within a card.
+            -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100">
+                <form id="leadForm" class="space-y-5">
+                    
+                    <div>
+                        <label for="church_email" class="block text-sm font-medium text-gray-700 mb-1 text-left">Church or Personal Email (Required)</label>
+                        <input type="email" id="church_email" name="Email" required
+                               placeholder="you@yourchurch.org"
+                               class="form-input-field w-full p-3 rounded-lg">
                     </div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-3">Sermon-to-Shorts</h3>
-                    <p class="text-gray-600">
-                        We analyze your full-length sermons and extract the most powerful, shareable moments. Our team edits these into high-impact vertical shorts for Instagram, TikTok, and YouTube.
-                    </p>
-                </div>
-                
-                <div class="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="p-3 bg-blue-100 rounded-full inline-block mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M21 12V7H5a2 2 0 0 1 0-4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"></path><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"></path><path d="M18 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2Z"></path></svg>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-3">Reach Greater Community</h3>
-                    <p class="text-gray-600">
-                        With more views, thats more people hearing the Word. More lives changed. More hearts touched. The simplest way to impact younger communities
-                    </p>
-                </div>
 
-                <div class="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="p-3 bg-blue-100 rounded-full inline-block mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m4.93 19.07 1.41-1.41"></path><path d="m17.66 6.34 1.41-1.41"></path></svg>
+                    <div>
+                        <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-1 text-left">Best Contact Phone Number</label>
+                        <input type="tel" id="phone_number" name="Phone Number"
+                               placeholder="(555) 555-5555"
+                               class="form-input-field w-full p-3 rounded-lg">
                     </div>
-                    <h3 class="text-xl md:text-2xl font-semibold mb-3">Formulated for Growth</h3>
-                    <p class="text-gray-600">
-                        We don't just make content; we make content that actually works. Our strategies are formulated to get views, engage your community, and invite more people to your church.
-                    </p>
-                </div>
 
+                    <div>
+                        <label for="youtube_url" class="block text-sm font-medium text-gray-700 mb-1 text-left">Church YouTube Channel URL</label>
+                        <input type="url" id="youtube_url" name="YouTube Channel URL"
+                               placeholder="https://www.youtube.com/@ChurchName"
+                               class="form-input-field w-full p-3 rounded-lg">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" id="submitButton" class="w-full py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 disabled:opacity-50">
+                            Submit
+                        </button>
+                    </div>
+                </form>
             </div>
+
         </div>
     </section>
-    
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4 md:px-8">
-        <div class="max-w-6xl mx-auto text-center">
-            <p>&copy; 2025 devscoffee.com. All rights reserved.</p>
-        </div>
-    </footer>
 
-
-    <div id="formModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm hidden transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        
-        <div id="modalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-md md:max-w-lg p-6 md:p-8 transform transition-all duration-300 scale-95 opacity-0">
-            
-            <div class="flex justify-between items-center mb-4">
-                <h2 id="modal-title" class="text-xl md:text-2xl font-bold text-gray-900">Ministry Outreach Assessment</h2>
-                <button id="closeModalButton" class="text-gray-400 hover:text-gray-700 transition-colors" aria-label="Close modal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            
-            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
-                <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
-            </div>
-
-            <form id="quizForm" class="space-y-6">
-                <div id="questionContainer" class="min-h-[150px] transition-opacity duration-200">
-                    </div>
-
-                <div class="flex justify-between pt-4">
-                    <button type="button" id="backButton" class="px-4 py-2 text-sm md:px-6 md:py-2 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors hidden">
-                        &larr; Back
-                    </button>
-                    <button type="button" id="nextButton" class="px-4 py-2 text-sm md:px-6 md:py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 disabled:opacity-50 ml-auto">
-                        Next &rarr;
-                    </button>
-                    <button type="submit" id="submitButton" class="px-4 py-2 text-sm md:px-6 md:py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 hidden">
-                        Submit
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    <!--
+      "Thank You" Modal (Used for confirmation after submission)
+    -->
     <div id="thanksModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm hidden transition-opacity duration-300" aria-labelledby="thanks-modal-title" role="dialog" aria-modal="true">
         
         <div id="thanksModalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-sm md:max-w-md p-6 md:p-8 text-center transform transition-all duration-300 scale-95 opacity-0">
@@ -198,7 +100,7 @@
             </div>
             <h2 id="thanks-modal-title" class="text-2xl font-bold text-gray-900 mb-3">Thank You!</h2>
             <p class="text-gray-600 mb-6" id="thanksMessage">
-                Your information has been received. We'll be in touch shortly to discuss your growth goals!
+                We've received your information and will be in touch shortly to schedule your **free 15-minute goal setting call**!
             </p>
             <button id="closeThanksButton"
                     class="w-full py-2 px-6 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
@@ -207,492 +109,22 @@
         </div>
     </div>
 
+    <!-- JavaScript for Form Functionality -->
     <script>
         // --- Configuration ---
         const FORM_SPREE_URL = 'https://formspree.io/f/xjknrjgq';
-        // Total steps in the good lead path is now 14 (12 questions + 2 good news steps)
-        const TOTAL_GOOD_LEAD_QUESTIONS = 14;
-
-        // Quiz Question Data - 12 steps for the good lead path
-        const questions = [
-            // Q1: Role Qualifier (Branching) - Step 1
-            {
-                id: 'q1_role',
-                type: 'multiple-choice',
-                prompt: '1. What is your primary role within the Ministry?',
-                options: [
-                    { text: 'Pastor / Senior Leader', value: 'Pastor', nextStepId: 'q2_content_freq' },
-                    { text: 'Secretary / Administrator', value: 'Secretary', nextStepId: 'q2_content_freq' },
-                    { text: 'Volunteer / Churchgoer', value: 'Churchgoer', nextStepId: 'q14_bad_lead_exit' } // Bad Lead exit path
-                ],
-                stepNumber: 1
-            },
-            
-            // --- Good Lead Path (Steps 2-14) ---
-            
-            // Q2: Current Content Situation (Pain/Realization) - Step 2
-            {
-                id: 'q2_content_freq',
-                type: 'multiple-choice',
-                prompt: '2. How often are you consistently posting high-quality, short-form video content to social media?',
-                options: [
-                    { text: 'Daily/Multiple times a week', value: 'High' },
-                    { text: 'Weekly (1-2 times)', value: 'Medium' },
-                    { text: 'Monthly or Less', value: 'Low' },
-                    { text: 'We do not post short-form videos', value: 'Never' }
-                ],
-                stepNumber: 2
-            },
-            
-            // Q3: Core Pain Point (Pain/Realization) - Step 3
-            {
-                id: 'q3_pain_point',
-                type: 'multiple-choice',
-                prompt: '3. What is the biggest constraint stopping you from posting more effective content?',
-                options: [
-                    { text: 'Lack of staff/volunteer time for editing', value: 'Time/Staff' },
-                    { text: 'Content receives low engagement/views', value: 'Low_Engagement' },
-                    { text: 'Unsure what moments to extract from sermons', value: 'Selection_Issue' },
-                    { text: 'Lack of budget to hire a professional service', value: 'Budget' }
-                ],
-                stepNumber: 3
-            },
-            
-            // Q4: Sermon Length (Data Collection) - Step 4
-            {
-                id: 'q4_sermon_length',
-                type: 'multiple-choice',
-                prompt: '4. How long are your typical weekly sermons/messages?',
-                options: [
-                    { text: 'Under 30 minutes', value: '<30' },
-                    { text: '30 - 60 minutes', value: '30-60' },
-                    { text: 'Over 60 minutes', value: '>60' }
-                ],
-                stepNumber: 4
-            },
-            
-            // Q5: Platform Focus (Data Collection) - Step 5
-            {
-                id: 'q5_platforms',
-                type: 'multiple-choice',
-                prompt: '5. Which social media platforms are your primary focus right now?',
-                options: [
-                    { text: 'Instagram & TikTok (Reels/Shorts)', value: 'Reels_Shorts' },
-                    { text: 'YouTube (Long-form and Shorts)', value: 'YouTube' },
-                    { text: 'Facebook & Website', value: 'Facebook_Web' },
-                    { text: 'All of the above', value: 'All' }
-                ],
-                stepNumber: 5
-            },
-            
-            // Q7: Time Cost (Data Collection/Pain) - Step 7
-            {
-                id: 'q7_staff_hours',
-                type: 'multiple-choice',
-                prompt: '6. How many staff or volunteer hours are currently spent each week on *editing* video content?',
-                options: [
-                    { text: '0-5 hours', value: '0-5' },
-                    { text: '5-15 hours', value: '5-15' },
-                    { text: '15+ hours', value: '15+' }
-                ],
-                stepNumber: 6
-            },
-            
-            // ** GOOD NEWS STEP 1 ** - Step 8
-            {
-                id: 'q8_good_news_time',
-                type: 'good-news',
-                prompt: '🎉 Good News!',
-                message: 'Your staff and volunteers are freed up! We handle all the tedious editing and content extraction, giving your team back those valuable hours every week.',
-                stepNumber: 7
-            },
-
-            // Q9: Budget Realization (Commitment) - Step 9
-            {
-                id: 'q9_criticality',
-                type: 'multiple-choice',
-                prompt: '7. On a scale of 1-5 (5 being critical), how important is it to solve this content problem *this quarter*?',
-                options: [
-                    { text: '1 - Not a priority', value: '1' },
-                    { text: '2 - We can wait', value: '2' },
-                    { text: '3 - Important, but flexible', value: '3' },
-                    { text: '4 - Very important', value: '4' },
-                    { text: '5 - Absolutely critical', value: '5' }
-                ],
-                stepNumber: 8
-            },
-
-            // Q10: Message Consistency - Step 10
-            {
-                id: 'q10_message_consistency',
-                type: 'multiple-choice',
-                prompt: '8. How confident are you that your weekly social media posts consistently deliver the core message of your sermon?',
-                options: [
-                    { text: 'Extremely confident (100% accurate)', value: 'High_Confidence' },
-                    { text: 'Moderately confident (Often correct)', value: 'Moderate_Confidence' },
-                    { text: 'Not very confident (Key messages often missed)', value: 'Low_Confidence' }
-                ],
-                stepNumber: 9
-            },
-
-            // Q11: Budget Willingness (Commitment) - Step 11
-            {
-                id: 'q11_budget',
-                type: 'multiple-choice',
-                prompt: '9. Do you have a dedicated monthly budget for professional media content or marketing?',
-                options: [
-                    { text: 'Yes, we are ready to invest now', value: 'Ready_to_Invest' },
-                    { text: 'Maybe, if the return on investment is clear', value: 'Conditional_Invest' },
-                    { text: 'No, we rely only on volunteers', value: 'No_Budget' }
-                ],
-                stepNumber: 10
-            },
-            
-            // ** GOOD NEWS STEP 2 ** - Step 12
-            {
-                id: 'q12_good_news_budget',
-                type: 'good-news',
-                prompt: '💰 Your Investment, Secured!',
-                message: 'Outsourcing content production is often more cost-effective than hiring, training, and retaining the necessary in-house editing staff. Let us save you time AND money.',
-                stepNumber: 11
-            },
-
-            // Q14: Contact Info (Final Submission Step) - Step 14
-            {
-                id: 'q14_contact',
-                type: 'contact',
-                prompt: '10. Great! You are ready for growth. Please share your name and email and we will reach out shortly!',
-                stepNumber: 12
-            },
-            
-            // --- Bad Lead Exit Path ---
-            
-            // Q14-B: Soft Exit (Email only)
-            {
-                id: 'q14_bad_lead_exit',
-                type: 'bad-lead-exit',
-                prompt: 'Thanks for your interest! We focus on serving Ministry Leaders. If you would like a free guide on how to talk to your pastor about media outreach, please leave your email below.',
-                stepNumber: 2, // Treated as step 2 of 2 for bad lead path
-                finalStep: true
-            }
-        ];
-
 
         // --- State and UI Elements ---
         const ui = {
-            openModalButton: document.getElementById('openModalButton'),
-            closeModalButton: document.getElementById('closeModalButton'),
-            formModal: document.getElementById('formModal'),
-            modalContent: document.getElementById('modalContent'),
-            quizForm: document.getElementById('quizForm'),
-            questionContainer: document.getElementById('questionContainer'),
-            progressBar: document.getElementById('progressBar'),
-            backButton: document.getElementById('backButton'),
-            nextButton: document.getElementById('nextButton'),
+            leadForm: document.getElementById('leadForm'),
             submitButton: document.getElementById('submitButton'),
             thanksModal: document.getElementById('thanksModal'),
             thanksModalContent: document.getElementById('thanksModalContent'),
-            closeThanksButton: document.getElementById('closeThanksButton'),
-            thanksMessage: document.getElementById('thanksMessage')
+            closeThanksButton: document.getElementById('closeThanksButton')
         };
 
         const state = {
-            currentStep: 1,
-            // Maps step number to the question ID for easy access
-            stepHistory: [questions[0].id],
-            formData: {
-                // Initialize with an identifier for Formspree filtering
-                'quiz_path': 'Good_Lead_Path'
-            },
-            isGoodLead: true,
             isSubmitting: false
-        };
-        
-        // --- Core Quiz Logic ---
-
-        // Get the current question object based on the step history
-        const getCurrentQuestion = () => {
-            const currentId = state.stepHistory[state.currentStep - 1];
-            return questions.find(q => q.id === currentId);
-        };
-
-        // Renders the current question content into the container
-        const renderQuestion = () => {
-            const currentQ = getCurrentQuestion();
-            if (!currentQ) return;
-            
-            // Update progress bar
-            const totalSteps = state.isGoodLead ? TOTAL_GOOD_LEAD_QUESTIONS : 2;
-            const progress = (state.currentStep / totalSteps) * 100;
-            ui.progressBar.style.width = `${progress}%`;
-            
-            // === START: Explicit Button Management for Good News ===
-            // Ensure the Next button is enabled for 'good-news' steps,
-            // and disabled for all other steps until an answer is selected.
-            if (currentQ.type === 'good-news') {
-                ui.nextButton.disabled = false;
-            } else {
-                ui.nextButton.disabled = true;
-            }
-            // === END: Explicit Button Management ===
-
-
-            // Question HTML generation
-            let contentHTML = `
-                <label class="block text-xl font-semibold text-gray-900 mb-4" for="${currentQ.id}">
-                    ${currentQ.prompt}
-                </label>
-            `;
-            
-            // Handle "Good News" steps separately
-            if (currentQ.type === 'good-news') {
-                 contentHTML = `
-                    <div class="good-news-message p-6 sm:p-8">
-                        <h3 class="text-3xl font-extrabold text-blue-800 mb-3">${currentQ.prompt}</h3>
-                        <p class="text-xl text-blue-700">${currentQ.message}</p>
-                    </div>
-                `;
-            } else if (currentQ.type === 'multiple-choice') {
-                contentHTML += currentQ.options.map((option, index) => `
-                    <div class="mb-3">
-                        <input type="radio" id="${currentQ.id}_${index}" name="${currentQ.id}" value="${option.value}" class="hidden peer" ${state.formData[currentQ.id] === option.value ? 'checked' : ''}>
-                        <label for="${currentQ.id}_${index}" class="quiz-option block p-4 border rounded-lg cursor-pointer text-base font-medium text-gray-700 select-none peer-checked:selected">
-                            ${option.text}
-                        </label>
-                    </div>
-                `).join('');
-                
-            } else if (currentQ.type === 'sentence' || currentQ.type === 'bad-lead-exit') {
-                const isFinal = currentQ.type === 'bad-lead-exit';
-                
-                // For the bad lead exit, we only need an email field
-                if (isFinal) {
-                    contentHTML += `
-                        <input type="email" id="email" name="email" required
-                               placeholder="Email Address"
-                               value="${state.formData['email'] || ''}"
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
-                    `;
-                } else {
-                    contentHTML += `
-                        <input type="text" id="${currentQ.id}" name="${currentQ.id}" required
-                               placeholder="${currentQ.placeholder || 'Your answer here...'}"
-                               value="${state.formData[currentQ.id] || ''}"
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
-                    `;
-                }
-
-            } else if (currentQ.type === 'contact') {
-                 // Final Contact Step (Q14) - Name then Email ONLY
-                contentHTML += `
-                    <div class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Full Name (Required)</label>
-                            <input type="text" id="name" name="name" required
-                                   value="${state.formData['name'] || ''}"
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Work Email (Required)</label>
-                            <input type="email" id="email" name="email" required
-                                   value="${state.formData['email'] || ''}"
-                                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
-                        </div>
-                    </div>
-                `;
-            }
-
-            ui.questionContainer.innerHTML = contentHTML;
-            attachInputListeners(currentQ);
-            updateNavigation();
-        };
-
-        // Attaches listeners to update state.formData and check validation
-        const attachInputListeners = (currentQ) => {
-            const inputs = ui.questionContainer.querySelectorAll('input, textarea, select');
-            
-            // Good News steps are automatically valid and clickable
-            if (currentQ.type === 'good-news') {
-                // The button is already explicitly enabled in renderQuestion, so we just return.
-                return;
-            }
-
-            inputs.forEach(input => {
-                const updateStateAndValidate = () => {
-                    const value = input.type === 'radio' && !input.checked ? undefined : input.value;
-                    
-                    // If a radio button is selected, we need to manually apply the 'selected' class
-                    if (input.type === 'radio') {
-                        // Find all labels for this question
-                        const questionLabels = ui.questionContainer.querySelectorAll('.quiz-option');
-                        questionLabels.forEach(label => label.classList.remove('selected'));
-
-                        if (input.checked) {
-                            const label = ui.questionContainer.querySelector(`label[for="${input.id}"]`);
-                            if (label) {
-                                label.classList.add('selected');
-                            }
-                        }
-                    }
-
-                    if (value !== undefined) {
-                        // Special handling for bad lead path, where the only input is email
-                        const key = currentQ.type === 'bad-lead-exit' ? 'email' : input.name;
-                        state.formData[key] = value;
-                    }
-                    checkValidation();
-                };
-                
-                if (input.type === 'radio') {
-                    input.addEventListener('change', updateStateAndValidate);
-                    // Also run updateStateAndValidate on initial render if already checked
-                    if (input.checked) {
-                         const label = ui.questionContainer.querySelector(`label[for="${input.id}"]`);
-                         if (label) {
-                            label.classList.add('selected');
-                        }
-                    }
-                } else {
-                    input.addEventListener('input', updateStateAndValidate);
-                }
-            });
-            checkValidation(); // Initial validation check
-        };
-
-        // Checks if the current question is answered and enables the 'Next' button
-        const checkValidation = () => {
-            const currentQ = getCurrentQuestion();
-            if (!currentQ) return;
-            
-            // Good News steps are always valid (and already enabled in renderQuestion)
-            if (currentQ.type === 'good-news') {
-                return;
-            }
-
-
-            let isValid = false;
-
-            if (currentQ.type === 'multiple-choice') {
-                const selected = ui.questionContainer.querySelector(`input[name="${currentQ.id}"]:checked`);
-                isValid = !!selected;
-            } else if (currentQ.type === 'sentence') {
-                const input = ui.questionContainer.querySelector(`input[name="${currentQ.id}"]`);
-                isValid = input && input.value.trim().length > 0;
-            } else if (currentQ.type === 'contact') {
-                // Check Name and Email validity
-                const nameInput = ui.questionContainer.querySelector('input[name="name"]');
-                const emailInput = ui.questionContainer.querySelector('input[name="email"]');
-                isValid = (nameInput && nameInput.value.trim().length > 0) && (emailInput && emailInput.value.trim().length > 0 && emailInput.checkValidity());
-            } else if (currentQ.type === 'bad-lead-exit') {
-                const emailInput = ui.questionContainer.querySelector('input[name="email"]');
-                isValid = (emailInput && emailInput.value.trim().length > 0 && emailInput.checkValidity());
-            }
-
-            // Set disabled state for the Next button based on validation for input steps
-            ui.nextButton.disabled = !isValid;
-        };
-
-        // Finds the next question ID in the sequence
-        const getNextQuestionId = (currentQ) => {
-            // Check for explicit nextStepId (only used for Q1 branching currently)
-            if (currentQ.id === 'q1_role') {
-                const selectedValue = state.formData[currentQ.id];
-                const selectedOption = currentQ.options.find(opt => opt.value === selectedValue);
-                if (selectedOption) {
-                    return selectedOption.nextStepId;
-                }
-            }
-            
-            // Default: find the next sequential step number
-            const nextStepNum = currentQ.stepNumber + 1;
-            
-            // Find the question with the next sequential step number
-            const nextQ = questions.find(q => q.stepNumber === nextStepNum);
-
-            return nextQ ? nextQ.id : null;
-        };
-
-
-        // Updates visibility of navigation buttons (Back, Next, Submit)
-        const updateNavigation = () => {
-            ui.backButton.classList.toggle('hidden', state.currentStep === 1);
-            
-            const currentQ = getCurrentQuestion();
-            // Check if the current step is the final contact step for either path
-            const isFinalStep = currentQ.id === 'q14_contact' || currentQ.id === 'q14_bad_lead_exit';
-
-            ui.nextButton.classList.toggle('hidden', isFinalStep);
-            ui.submitButton.classList.toggle('hidden', !isFinalStep);
-            
-            // For good-news steps, next button should show "Continue" instead of the arrow
-            if (currentQ.type === 'good-news') {
-                ui.nextButton.textContent = 'Continue \u2192'; // Unicode for right arrow
-            } else {
-                 ui.nextButton.textContent = 'Next \u2192';
-            }
-
-
-            // Re-check validation for the final step to enable submit
-            if (isFinalStep) {
-                checkValidation();
-                // Use next button's disabled state logic for the submit button
-                ui.submitButton.disabled = ui.nextButton.disabled;
-            } else {
-                // For non-final steps, let checkValidation (called at the end) manage ui.nextButton.disabled
-                // Ensure submit button is hidden and not disabled when it shouldn't be visible
-                ui.submitButton.disabled = false;
-            }
-
-            checkValidation(); // Ensure button is enabled/disabled correctly on step change
-        };
-
-        // Handles the 'Next' button click
-        const handleNext = () => {
-            const currentQ = getCurrentQuestion();
-            
-            // 1. Determine next question ID
-            let nextId = getNextQuestionId(currentQ);
-            
-            // Handle step history update for branching path (Q1)
-            if (currentQ.id === 'q1_role') {
-                 const selectedValue = state.formData[currentQ.id];
-                 state.isGoodLead = (selectedValue === 'Pastor' || selectedValue === 'Secretary');
-                 state.formData['quiz_path'] = state.isGoodLead ? 'Good_Lead_Path' : 'Bad_Lead_Path';
-                 state.stepHistory = [currentQ.id, nextId]; // Reset history to the two steps for the bad lead
-            }
-
-            // 2. Advance the state
-            if (nextId) {
-                state.currentStep++;
-                
-                // If this is a new step ID (which it should be, unless stepping back), add it to history
-                if (state.stepHistory.length < state.currentStep) {
-                     state.stepHistory.push(nextId);
-                }
-                
-                // 3. Render the next question
-                renderQuestion();
-                // After moving to the next question, the button's state is handled by renderQuestion/checkValidation
-            }
-        };
-
-        // Handles the 'Back' button click
-        const handleBack = () => {
-            if (state.currentStep > 1) {
-                // If we are currently on a Good News step, we need to delete it from history
-                const currentQ = getCurrentQuestion();
-                if (currentQ && currentQ.type === 'good-news') {
-                    // Remove the current good-news step from history
-                    state.stepHistory.pop();
-                } else if (state.currentStep === 2 && !state.isGoodLead) {
-                    // Special case: going back from the bad lead exit page (step 2)
-                    // The history size should go from 2 to 1.
-                    state.stepHistory.pop();
-                }
-                
-                state.currentStep--;
-                renderQuestion();
-            }
         };
         
         // --- Form Submission ---
@@ -706,39 +138,27 @@
             ui.submitButton.disabled = true;
 
             // Prepare final data for Formspree
-            const finalFormData = new FormData();
-            for (const key in state.formData) {
-                finalFormData.append(key, state.formData[key]);
-            }
+            const formData = new FormData(ui.leadForm);
             
             // Add a timestamp for better logging
-            finalFormData.append('submission_time', new Date().toISOString());
+            formData.append('submission_time', new Date().toISOString());
 
             try {
                 const response = await fetch(FORM_SPREE_URL, {
                     method: 'POST',
-                    body: finalFormData,
+                    body: formData,
                     headers: {
                         'Accept': 'application/json'
                     }
                 });
 
                 if (response.ok) {
-                    console.log("Quiz submitted successfully to Formspree.");
-                    
-                    if (state.isGoodLead) {
-                        ui.thanksMessage.innerHTML = 'Fantastic! We will be in touch shortly to schedule your **free 15-minute goal setting call**. Your quiz answers are on the way to your inbox.';
-                    } else {
-                         ui.thanksMessage.innerHTML = 'Thank you! The **Free Media Outreach Guide** is being sent to your email now.';
-                    }
-
-                    closeFormModal();
-                    setTimeout(openThanksModal, 400);
-                    ui.quizForm.reset();
-                    resetQuizState();
-
+                    console.log("Lead form submitted successfully to Formspree.");
+                    // Since the form is not in a modal, we just show the thank you modal
+                    setTimeout(openThanksModal, 100);
+                    ui.leadForm.reset();
                 } else {
-                    console.warn('Oops! There was a problem submitting your quiz.');
+                    console.warn('Oops! There was a problem submitting your information.');
                     ui.submitButton.textContent = 'Error: Try Again';
                 }
             } catch (error) {
@@ -746,7 +166,7 @@
                 ui.submitButton.textContent = 'Network Error';
             } finally {
                 state.isSubmitting = false;
-                // Reset button text after a delay or on next render
+                // Reset button text after a delay or on successful submission
                 if (ui.submitButton.textContent.includes('Error')) {
                      setTimeout(() => ui.submitButton.textContent = 'Submit', 3000);
                 } else {
@@ -756,30 +176,7 @@
             }
         };
         
-        // --- Modal Control Functions ---
-        
-        const resetQuizState = () => {
-            state.currentStep = 1;
-            state.stepHistory = [questions[0].id];
-            state.formData = { 'quiz_path': 'Good_Lead_Path' };
-            state.isGoodLead = true;
-            renderQuestion();
-        };
-
-        const openFormModal = () => {
-            formModal.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                ui.modalContent.classList.remove('scale-95', 'opacity-0');
-            });
-            resetQuizState();
-        };
-
-        const closeFormModal = () => {
-            ui.modalContent.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                ui.formModal.classList.add('hidden');
-            }, 300);
-        };
+        // --- Modal Control Functions (Only for the Thank You message now) ---
 
         const openThanksModal = () => {
             ui.thanksModal.classList.remove('hidden');
@@ -796,19 +193,9 @@
         };
 
         // --- Event Listeners and Initialization ---
-
-        ui.openModalButton.addEventListener('click', openFormModal);
-        ui.closeModalButton.addEventListener('click', closeFormModal);
-        ui.formModal.addEventListener('click', (e) => {
-            if (e.target === ui.formModal) {
-                closeFormModal();
-            }
-        });
-
-        // Quiz navigation listeners
-        ui.nextButton.addEventListener('click', handleNext);
-        ui.backButton.addEventListener('click', handleBack);
-        ui.quizForm.addEventListener('submit', handleSubmission);
+        
+        // Form submission listener
+        ui.leadForm.addEventListener('submit', handleSubmission);
 
         // Thanks modal listeners
         ui.closeThanksButton.addEventListener('click', closeThanksModal);
@@ -816,11 +203,6 @@
             if (e.target === ui.thanksModal) {
                 closeThanksModal();
             }
-        });
-        
-        // Initial render when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            renderQuestion();
         });
 
     </script>
