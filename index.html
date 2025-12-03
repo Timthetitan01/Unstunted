@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amplify Your Ministry</title>
-    <!-- Import Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Import Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <style>
-        /* Apply the Inter font family */
+        /* Base styles using Times New Roman for body/form text */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Times New Roman', Times, serif;
         }
 
-        /* Input focus styles */
+        /* 1. Main Headings (H1) - Using Bungee */
+        .headline-bungee {
+            font-family: 'Bungee', cursive;
+            /* Adjust line height for better appearance with Bungee */
+            line-height: 1.1;
+        }
+
+        /* 2. Sub-Headline (P) - Using Gill Sans */
+        .subheadline-gillsans {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+        }
+
+        /* 3. Banner Logo Text - Using Times New Roman */
+        .banner-logo-text {
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+        
+        /* Input focus styles (kept original functionality) */
         .form-input-field {
             transition: all 0.2s;
             border: 1px solid #d1d5db; /* gray-300 */
@@ -29,31 +45,37 @@
             border-color: #3b82f6; /* blue-500 */
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* blue-500 ring */
         }
+
+        /* Styling for the Logo Image */
+        .unstunted-logo {
+            height: 2rem; /* Adjusted height for better fit in the banner */
+            width: auto;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
 
-    <!--
-      Hero Section - Now containing the form directly
-    -->
-    <section class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 bg-gradient-to-b from-white to-gray-50 relative">
-        <div class="text-center max-w-4xl mx-auto">
-            
-            <!-- Main Headline -->
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                 3 Free Sermon Clips
-            </h1>
-            <h1 class="text-4xl md:text-6xl font-bold text-blue-600 mb-6 leading-tight">As Promised</h1>
+    <header class="w-full bg-gray-900 shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-start">
+            <div class="flex items-center">
+                <img src="UNSTUNTED_LOGO.png" alt="UNSTUNTED Logo" class="unstunted-logo">
+                <span class="text-white text-xl font-extrabold banner-logo-text ml-2 hidden sm:inline">UNSTUNTED</span>
+            </div>
+        </div>
+    </header>
 
-            <!-- Sub-headline -->
-            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+    <section class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 bg-gradient-to-b from-white to-gray-50 relative">
+        <div class="text-center max-w-4xl mx-auto pt-16">
+            
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight headline-bungee">
+                 3 FREE SERMON CLIPS
+            </h1>
+            <h1 class="text-4xl md:text-6xl font-bold text-blue-600 mb-6 leading-tight headline-bungee">AS PROMISED</h1>
+
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto subheadline-gillsans">
             Done for YOU, from your sermons, ready to post
             </p>
 
-            <!--
-                Direct Lead Capture Form (Previously inside the modal)
-                Now centered and contained within a card.
-            -->
             <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100">
                 <form id="leadForm" class="space-y-5">
                     
@@ -78,7 +100,6 @@
                                class="form-input-field w-full p-3 rounded-lg">
                     </div>
 
-                    <!-- Submit Button -->
                     <div class="pt-4">
                         <button type="submit" id="submitButton" class="w-full py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 disabled:opacity-50">
                             Submit
@@ -90,9 +111,6 @@
         </div>
     </section>
 
-    <!--
-      "Thank You" Modal (Used for confirmation after submission)
-    -->
     <div id="thanksModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm hidden transition-opacity duration-300" aria-labelledby="thanks-modal-title" role="dialog" aria-modal="true">
         
         <div id="thanksModalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-sm md:max-w-md p-6 md:p-8 text-center transform transition-all duration-300 scale-95 opacity-0">
@@ -110,7 +128,6 @@
         </div>
     </div>
 
-    <!-- JavaScript for Form Functionality -->
     <script>
         // --- Configuration ---
         const FORM_SPREE_URL = 'https://formspree.io/f/xjknrjgq';
