@@ -53,10 +53,10 @@
                 FREE SERMON CLIPS
             </h1>
 
-            <img src="graphic.png" alt="Graphics demonstrating the output clips" class="w-full max-w-lg mx-auto mb-5">
+            <img src="graphic.png" alt="Graphics demonstrating the output clips" class="w-full max-w-lg mx-auto **mb-2**">
             
             
-            <div class="bg-white p-6 md:p-4 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100">
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100">
                 <form id="leadForm" class="space-y-5">
                     
                     <div>
@@ -176,7 +176,7 @@
                 state.isSubmitting = false;
                 // Reset button text after a delay or on successful submission
                 if (ui.submitButton.textContent.includes('Error')) {
-                      setTimeout(() => ui.submitButton.textContent = 'Get My 3 Free Shorts', 3000);
+                     setTimeout(() => ui.submitButton.textContent = 'Get My 3 Free Shorts', 3000);
                 } else {
                     ui.submitButton.textContent = 'Get My 3 Free Shorts';
                 }
