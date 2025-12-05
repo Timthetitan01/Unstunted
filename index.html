@@ -11,18 +11,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Set all text back to the Inter font family */
+        /* Apply the Inter font family */
         body {
             font-family: 'Inter', sans-serif;
         }
 
         /* Styling for the Logo Image */
         .unstunted-logo {
-            height: 2rem; /* Adjusted height for better fit in the banner */
+            height: 2rem;
             width: auto;
         }
-        
-        /* Input focus styles (kept original functionality) */
+
+        /* Input focus styles */
         .form-input-field {
             transition: all 0.2s;
             border: 1px solid #d1d5db; /* gray-300 */
@@ -40,7 +40,7 @@
     <header class="w-full bg-black shadow-md sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-start">
             <div class="flex items-center">
-                <img src="UNSTUNTED_LOGO.png" alt="UNSTUNTED Logo" class="unstunted-logo">
+                <img src="UNSTUNTEDLOGO.png" alt="UNSTUNTED Logo" class="unstunted-logo">
                 <span class="text-white text-xl font-bold ml-2">UNSTUNTED</span>
             </div>
         </div>
@@ -52,11 +52,13 @@
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-0 leading-tight">
                  3 FREE SERMON CLIPS
             </h1>
-            <h1 class="text-4xl md:text-6xl font-bold text-blue-600 mb-1 leading-tight">AS PROMISED</h1>
+            <h1 class="text-4xl md:text-6xl font-bold text-blue-600 mb-0 leading-tight">AS PROMISED</h1>
 
-            <p class="text-lg md:text-xl text-gray-600 mb-2 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-gray-600 mb-3 max-w-3xl mx-auto">
             Done for YOU, from your sermons, ready to post
             </p>
+
+            <img src="graphic.png" alt="Graphics demonstrating the output clips" class="w-full max-w-lg mx-auto mb-5">
 
             <div class="bg-white p-6 md:p-8 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100">
                 <form id="leadForm" class="space-y-5">
@@ -84,7 +86,7 @@
 
                     <div class="pt-4">
                         <button type="submit" id="submitButton" class="w-full py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-300 disabled:opacity-50">
-                            Get My 3 Free Shorts
+                            Submit
                         </button>
                     </div>
                 </form>
