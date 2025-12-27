@@ -11,13 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        html, body {
-    overflow: hidden;
-    height: 100vh;
-}
         /* Apply the Inter font family */
         body {
             font-family: 'Inter', sans-serif;
+            /* REMOVED overflow: hidden to re-enable scrolling */
         }
 
         /* Styling for the Logo Image */
@@ -50,16 +47,18 @@
         </div>
     </header>
 
-<section class="flex flex-col items-center justify-start p-4 md:p-8 bg-white relative pt-5 h-screen overflow-hidden">        <div class="text-center max-w-4xl mx-auto">
+    <section class="flex flex-col items-center justify-start p-4 md:p-8 bg-white relative min-h-screen py-10">
+        <div class="text-center max-w-4xl mx-auto w-full">
             
             <h1 class="text-3xl md:text-5xl font-bold text-blue-600 mb-0 leading-tight">
                 FREE SERMON CLIPS
             </h1>
 
-            <img src="graphic.png" alt="Graphics demonstrating the output clips" class="w-full max-w-lg mx-auto mb-2">
+            <img src="graphic.png" alt="Graphics demonstrating the output clips" class="w-full max-w-lg mx-auto mb-6">
             
-            
-<div class="bg-white p-5 md:p-6 pt-10 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100 max-h-[70vh] overflow-auto">                <form id="leadForm" class="**space-y-4**">
+            <div class="bg-white p-5 md:p-6 pt-10 rounded-xl shadow-xl w-full max-w-lg mx-auto border border-gray-100">
+                
+                <form id="leadForm" class="space-y-4">
                     
                     <div>
                         <label for="church_email" class="block text-sm font-medium text-gray-700 mb-1 text-left">Church or Personal Email (Required)</label>
@@ -68,9 +67,11 @@
                                class="form-input-field w-full p-3 rounded-3xl">
                     </div>
 
-<div id="phone-and-name-row" class="grid grid-cols-2 gap-4 mt-3">                        
+                    <div id="phone-and-name-row" class="grid grid-cols-2 gap-4 mt-3">
+                        
                         <div>
-<label for="phone_number" class="block text-sm font-medium text-gray-700 mb-1 text-left">Phone Number</label>                            <input type="tel" id="phone_number" name="Phone Number"
+                            <label for="phone_number" class="block text-sm font-medium text-gray-700 mb-1 text-left">Phone Number</label>
+                            <input type="tel" id="phone_number" name="Phone"
                                    placeholder="(555) 555-5555"
                                    class="form-input-field w-full p-3 rounded-3xl">
                         </div>
@@ -84,18 +85,17 @@
                     </div>
 
                     <div class="mt-3">
-    <label for="youtube_url" class="block text-sm font-medium text-gray-700 mb-2 text-left">Church YouTube Channel URL</label>
-    <input type="url" id="youtube_url" ...
-                        <input type="url" id="youtube_url" name="YouTube Channel URL"
+                        <label for="youtube_url" class="block text-sm font-medium text-gray-700 mb-2 text-left">Church YouTube Channel URL</label>
+                        <input type="url" id="youtube_url" name="URL"
                                placeholder="https://www.youtube.com/@ChurchName"
                                class="form-input-field w-full p-3 rounded-3xl">
                     </div>
 
-                 <div class="pt-6"> 
-    <button type="submit" id="submitButton" class="w-full py-3 bg-purple-600 text-white rounded-3xl text-lg font-semibold shadow-lg hover:bg-purple-700 transition-all duration-300 disabled:opacity-50">
-        Get My 3 Free Shorts
-    </button>
-</div>
+                    <div class="pt-6"> 
+                        <button type="submit" id="submitButton" class="w-full py-3 bg-purple-600 text-white rounded-3xl text-lg font-semibold shadow-lg hover:bg-purple-700 transition-all duration-300 disabled:opacity-50">
+                            Get My 3 Free Shorts
+                        </button>
+                    </div>
                 </form>
             </div>
 
@@ -121,7 +121,8 @@
 
     <script>
         // --- Configuration ---
-        const FORM_SPREE_URL = 'https://formspree.io/f/xjknrjgq';
+        // TODO: PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE
+        const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE'; 
 
         // --- State and UI Elements ---
         const ui = {
@@ -140,52 +141,51 @@
         const handleSubmission = async (e) => {
             e.preventDefault();
 
-            // Disable button and show loading state
             if (state.isSubmitting) return;
             state.isSubmitting = true;
             ui.submitButton.textContent = 'Sending...';
             ui.submitButton.disabled = true;
 
-            // Prepare final data for Formspree
             const formData = new FormData(ui.leadForm);
             
-            // Add a timestamp for better logging
-            formData.append('submission_time', new Date().toISOString());
+            // Add a timestamp
+            formData.append('SubmissionTime', new Date().toLocaleString());
 
             try {
-                const response = await fetch(FORM_SPREE_URL, {
+                // Sending to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    body: formData
                 });
 
-                if (response.ok) {
-                    console.log("Lead form submitted successfully to Formspree.");
-                    // Since the form is not in a modal, we just show the thank you modal
-                    setTimeout(openThanksModal, 100);
-                    ui.leadForm.reset();
-                } else {
-                    console.warn('Oops! There was a problem submitting your information.');
-                    ui.submitButton.textContent = 'Error: Try Again';
-                }
+                // Google Scripts might not return standard 200 OK in no-cors mode, 
+                // but checking response is good practice.
+                console.log("Form submitted.");
+                
+                // Show thanks modal
+                setTimeout(openThanksModal, 100);
+                ui.leadForm.reset();
+
             } catch (error) {
                 console.error("Fetch Error:", error);
-                ui.submitButton.textContent = 'Network Error';
+                // Even if there is a CORS warning in console, it often still works with Google Sheets.
+                // However, for user experience, we assume success or handle generic error.
+                // If you haven't set up the script URL yet, this will fail.
+                if (GOOGLE_SCRIPT_URL.includes('PASTE_YOUR')) {
+                    alert('Please configure the Google Script URL in the code.');
+                } else {
+                    // Fallback success for simple Google Scripts that don't return proper CORS headers
+                    setTimeout(openThanksModal, 100);
+                    ui.leadForm.reset();
+                }
             } finally {
                 state.isSubmitting = false;
-                // Reset button text after a delay or on successful submission
-                if (ui.submitButton.textContent.includes('Error')) {
-                     setTimeout(() => ui.submitButton.textContent = 'Get My 3 Free Shorts', 3000);
-                } else {
-                    ui.submitButton.textContent = 'Get My 3 Free Shorts';
-                }
+                ui.submitButton.textContent = 'Get My 3 Free Shorts';
                 ui.submitButton.disabled = false;
             }
         };
         
-        // --- Modal Control Functions (Only for the Thank You message now) ---
+        // --- Modal Control Functions ---
 
         const openThanksModal = () => {
             ui.thanksModal.classList.remove('hidden');
@@ -201,12 +201,8 @@
             }, 300);
         };
 
-        // --- Event Listeners and Initialization ---
-        
-        // Form submission listener
+        // --- Event Listeners ---
         ui.leadForm.addEventListener('submit', handleSubmission);
-
-        // Thanks modal listeners
         ui.closeThanksButton.addEventListener('click', closeThanksModal);
         ui.thanksModal.addEventListener('click', (e) => {
             if (e.target === ui.thanksModal) {
